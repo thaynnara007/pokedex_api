@@ -1,0 +1,17 @@
+.click{
+  border-top-style:solid gray;
+  border-right-style:solid gray;
+  border-left-style:solid gray;
+  color: tomato;
+  background-color: white;
+  border-radius: 0.1em;
+}
+
+.nav-menu{
+  color: whitesmoke;
+  background-color: tomato
+}
+
+.a:hover{
+  background-color: crimson
+}
