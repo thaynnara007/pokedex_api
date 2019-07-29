@@ -1,0 +1,24 @@
+.about-box{
+  max-width: 50em;
+  margin-top: 10em;
+  background-color: #333;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0.2em;
+}
+
+.about-head{
+  background-color: tomato;
+  border-radius: 0.2em;
+}
+
+.about-font-head{
+  font-size: 1em;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.about-body{
+  margin: 2em 1em;
+  color: whitesmoke
+}
