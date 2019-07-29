@@ -20,7 +20,7 @@ class Navbar extends React.Component{
             <a className="nav-link">Pokedex</a>
           </li>
           <li className={classNameT} onClick={ (event) => this.props.click(event, 'try')}>
-            <a className="nav-link">Try it out</a>
+            <a className="nav-link">Try it out !</a>
           </li>
           <li className={classNameH} onClick={ (event) => this.props.click(event, 'how')}>
             <a className="nav-link">How it was done</a>
