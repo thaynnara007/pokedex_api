@@ -35,11 +35,6 @@ model = None
 lb = None
 IMG_SIZE = (96,96)
 
-@app.route('/pokedex', methods=['GET'])
-def merda():
-
-  return flask.jsonify({'data':'infernopratercao'})
-
 @app.route('/pokedex/predict', methods=['POST'])
 def predict():
 

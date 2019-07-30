@@ -2,16 +2,16 @@
   border-top-style:solid gray;
   border-right-style:solid gray;
   border-left-style:solid gray;
-  color: tomato;
+  color: firebrick;
   background-color: white;
   border-radius: 0.1em;
 }
 
 .nav-menu{
   color: whitesmoke;
-  background-color: tomato
+  background-color: firebrick
 }
 
 .a:hover{
-  background-color: crimson
+  background-color: tomato
 }

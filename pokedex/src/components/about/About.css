@@ -1,14 +1,14 @@
 .about-box{
   max-width: 50em;
   margin-top: 10em;
-  background-color: #333;
+  background-color: whitesmoke;
   padding-left: 0;
   padding-right: 0;
   border-radius: 0.2em;
 }
 
 .about-head{
-  background-color: tomato;
+  background-color: firebrick;
   border-radius: 0.2em;
 }
 
@@ -20,5 +20,5 @@
 
 .about-body{
   margin: 2em 1em;
-  color: whitesmoke
+  color: #333
 }
