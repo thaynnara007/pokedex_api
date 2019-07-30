@@ -2,7 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
-import About from './components/about/About'
+import About from './components/about/About';
+import Predict from './components/predict/Predict'
 
 class App extends React.Component{
 
@@ -30,7 +31,8 @@ class App extends React.Component{
   renderPage(){
     
     if (this.state.about) return (<About></About>)
-    else return
+    else if (this.state.try) return (<Predict></Predict>)
+    else return null
   }
 
   render() {

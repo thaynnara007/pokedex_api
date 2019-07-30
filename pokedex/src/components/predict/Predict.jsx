@@ -1,6 +1,7 @@
 import React from 'react'
 import image from '../../img/132.png'
 import './Predict.css'
+import Api from '../Api'
 
 class Predict extends React.Component{
 
@@ -9,36 +10,63 @@ class Predict extends React.Component{
 
     this.state = {
       file: null,
-      typeFile: null,
-      url: null
+      url: null,
+      predictions: []
     }
     this.renderImage = this.renderImage.bind(this)
+    this.predict = this.predict.bind(this)
+    this.renderPredictions = this.renderPredictions.bind(this)
   }
 
   uploadImage(event){
     
-      var file = undefined;
-      var type = undefined;
-      var url = undefined;
-      if(event.target.files[0]){ 
-          type = event.target.files[0].type
-          file = event.target.files[0];
-          url = URL.createObjectURL(file);
-      }else{    
-          file = this.state.file;
-          type = this.state.type;
-          url = this.state.url;
-      }
-      this.setState({
-          file : file,
-          typeFile : type,
-          url: url
-      })
+    let file = undefined
+    let url = undefined
+
+    if(event.target.files[0]){ 
+        file = event.target.files[0];
+        url = URL.createObjectURL(file);
+    }else{    
+        file = this.state.file;
+        url = this.state.url;
+    }
+    this.setState({
+        file : file,
+        url: url
+    })
+  }
+
+  predict(event){
+    event.preventDefault()
+
+    let formData = new FormData()
+    formData.append('image', this.state.file)
     
+    Api.post('pokedex/predict', formData)
+    .then( response =>{
+      
+      this.setState({
+        file: this.state.file,
+        url: this.state.url,
+        predictions: response.data.predictions
+      })
+    })
+    .catch( error =>{
+      console.log(error)
+    })
   }
 
   renderImage(){
     return (<img className="img-size" src={(this.state.url != null) ? this.state.url : image} alt=""></img>)
+  }
+
+  renderPredictions(){
+
+    var info = this.state.predictions.map((prediction, num) => {
+      return (<div key={num}><p>{prediction.label}: {prediction.probability}</p></div>)
+    })
+
+    return info
   }
 
   render(){
@@ -54,19 +82,14 @@ class Predict extends React.Component{
             onChange={(event) => this.uploadImage(event, 'file')}></input>
           </div>
           <div>
-            <button className="btn btn-outline-primary predict-button">Predict</button>
+            <button className="btn btn-outline-primary predict-button"
+            onClick={this.predict}>Predict</button>
           </div>
         </div>
           <div className="container result-box">
             <details>
               <summary>Results</summary>
-              <div><p>Pikachu: 0.0%</p></div>
-              <div><p>Charmander: 0.0%</p></div>
-              <div><p>Squirtle: 0.0%</p></div>
-              <div><p>Bulbasaur: 0.0%</p></div>
-              <div><p>Cyndaquil: 0.0%</p></div>
-              <div><p>Totodile: 0.0%</p></div>
-              <div><p>Chikorita: 0.0%</p></div>
+              {this.renderPredictions()}
             </details>
         </div>
       </div>

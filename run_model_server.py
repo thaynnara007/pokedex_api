@@ -1,6 +1,7 @@
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
+from flask_cors import CORS
 from PIL import Image
 import numpy as np
 import flask
@@ -29,9 +30,15 @@ def prepare_image(image_bytes, size):
   return image
 
 app = flask.Flask(__name__)
+CORS(app, resources={r'/*': {'origins': '*'}})
 model = None
 lb = None
 IMG_SIZE = (96,96)
+
+@app.route('/pokedex', methods=['GET'])
+def merda():
+
+  return flask.jsonify({'data':'infernopratercao'})
 
 @app.route('/pokedex/predict', methods=['POST'])
 def predict():
@@ -42,13 +49,13 @@ def predict():
 
   if (flask.request.method == "POST"):
     if (flask.request.files.get('image')):
-
+      
       image_bytes = flask.request.files['image'].read()
       image = prepare_image(image_bytes, IMG_SIZE)
       
       preds = model.predict(image)[0]
       data["predictions"] = []
-    
+
       # probability and index
       maxi = (-1, 0)
       i = 0
