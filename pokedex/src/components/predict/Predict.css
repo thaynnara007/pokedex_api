@@ -50,16 +50,16 @@
   padding-right: 0em;
 }
 
-details {
+.details {
   background: firebrick;
-  padding: 1em;
+  padding: 0.6em;
   border: 1px solid hsla(162, 76%, 32%, .3);
   color: whitesmoke;
   border-radius: 5px; 
 } 
 
 
-details > div > p {
+.p {
   background: white;
   padding: 0.5em 0.7em;
   border-radius: 5px;

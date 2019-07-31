@@ -39,21 +39,23 @@ class Predict extends React.Component{
   predict(event){
     event.preventDefault()
 
-    let formData = new FormData()
-    formData.append('image', this.state.file)
-    
-    Api.post('pokedex/predict', formData)
-    .then( response =>{
+    if (this.state.file){
+      let formData = new FormData()
+      formData.append('image', this.state.file)
       
-      this.setState({
-        file: this.state.file,
-        url: this.state.url,
-        predictions: response.data.predictions
+      Api.post('pokedex/predict', formData)
+      .then( response =>{
+
+        this.setState({
+          file: this.state.file,
+          url: this.state.url,
+          predictions: response.data.predictions
+        })
       })
-    })
-    .catch( error =>{
-      console.log(error)
-    })
+      .catch( error =>{
+        console.log(error)
+      })
+    }
   }
 
   renderImage(){
@@ -63,7 +65,7 @@ class Predict extends React.Component{
   renderPredictions(){
 
     var info = this.state.predictions.map((prediction, num) => {
-      return (<div key={num}><p>{prediction.label}: {prediction.probability}</p></div>)
+      return (<div key={num}><p className="p">{prediction.label}: {prediction.probability}</p></div>)
     })
 
     return info
@@ -87,10 +89,10 @@ class Predict extends React.Component{
           </div>
         </div>
           <div className="container result-box">
-            <details>
-              <summary>Results</summary>
+            <div className='details'>
+              <p>Results</p>
               {this.renderPredictions()}
-            </details>
+            </div>
         </div>
       </div>
     )

@@ -30,9 +30,24 @@ class App extends React.Component{
 
   renderPage(){
     
-    if (this.state.about) return (<About></About>)
+    if (this.state.about){ 
+      const title = 'What is it?'
+      const body = (<p>This is a artificial intelligence that has as goal recognizing some pokemons images
+      The model produced can classify seven pokemons, which are: pikachu, charmander, squirtle 
+      bulbasaur, cyndaquil, totodile and chikorita, so, even if its given a image which it is no
+      part  of that seven ones, the model is going to try classify the image amoung the seven.</p>)
+      
+      return (<About title={title} body={body}></About>)
+    }
     else if (this.state.try) return (<Predict></Predict>)
-    else return null
+    else{
+      const title = "Neural network"
+      const body = (<p>It was built and trained a convolutional neural network with a data
+      set of about 8490 images. For more details visit the
+      <a href="https://github.com/thaynnara007/pokedex"> github repository</a></p>)
+    
+      return (<About title={title} body={body}></About>)
+    }
   }
 
   render() {
