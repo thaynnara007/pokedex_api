@@ -6,6 +6,7 @@ from PIL import Image
 import numpy as np
 import flask
 import io
+import os
 import pickle
 import cv2
 
@@ -77,4 +78,5 @@ if __name__ == "__main__":
 
   load_model_()
   load_label()
-  app.run()
+  port = int(os.environ.get("PORT", 5000))
+  app.run(port=port)
