@@ -1,6 +1,6 @@
 # Pokedex - api
 
-This is a api that has a goal make easy the usubality of the [model](https://github.com/thaynnara007/pokedex) that was developed to classify some pokemons images.
+This is a api that has a goal make easy the usability of the [model](https://github.com/thaynnara007/pokedex) that was developed to classify some pokemons images.
 
 ---
 
